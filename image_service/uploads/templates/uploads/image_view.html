@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h2>Загруженное изображение</h2>
+
+    <div class="input-group mb-3">
+      <input id="full-url" type="text" class="form-control" value="{{ image.image.url }}" readonly>
+      <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard()">Скопировать</button>
+    </div>
+
+    <img src="{{ image.image.url }}" class="img-fluid" alt="Загруженное изображение">
+  </div>
+
+  <script>
+    function copyToClipboard() {
+      var copyText = document.getElementById("full-url");
+      copyText.select();
+      document.execCommand("copy");
+      // Убрали сообщение о копировании
+    }
+  </script>
+{% endblock %}
